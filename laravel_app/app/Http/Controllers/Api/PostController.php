@@ -38,7 +38,8 @@ class PostController extends Controller
         }
         $post = Post::create([
             ...$data,
-            'post_photo' => $photo_path
+            'post_photo' => $photo_path,
+             'user_id'=>auth()->id(),
         ]);
         return response()->json(new PostResource($post), 201);
     }

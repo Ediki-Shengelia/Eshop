@@ -11,6 +11,7 @@ class Post extends Model
     public $keyType = 'unsignedBigInteger';
     protected $fillable = [
         'title',
+        'user_id',
         'post_photo',
         'description',
         'phone_number',

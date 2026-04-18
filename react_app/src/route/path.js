@@ -1,4 +1,6 @@
 export const path = {
-  login: "/login",
+  login: "/",
   register: "/register",
+  dashboard: "/dashboard",
+  postId: "/post/:id",
 };

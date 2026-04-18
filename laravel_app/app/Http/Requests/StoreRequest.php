@@ -23,6 +23,7 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
+           
             'title' => 'required|min:5',
             'post_photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2028',
             'description' => 'nullable|string',

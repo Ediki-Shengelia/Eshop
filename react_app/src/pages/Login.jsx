@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useContext } from "react";
+import {useNavigate} from 'react-router-dom'
+import {path} from '../route/path'
 import { AuthContext } from "../auth/AuthContext";
 const Login = () => {
+  const navigate=useNavigate();
   const { login, errData } = useContext(AuthContext);
   const [form, setForm] = useState({
     email: "",
@@ -11,9 +14,12 @@ const Login = () => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   }
-  function onSubmitHandler(e) {
+  async function onSubmitHandler(e) {
     e.preventDefault();
-    login(form);
+   const user=await login(form);
+    if(user){
+      navigate(path.dashboard);
+    }
   }
   return (
     <form onSubmit={onSubmitHandler}>

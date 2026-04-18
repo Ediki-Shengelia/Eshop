@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../auth/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { path } from "../route/path";
 const Register = () => {
+    const navigate=useNavigate();
   const { register ,errData} = useContext(AuthContext);
   const [form, setForm] = useState({
     name: "",
@@ -45,10 +48,12 @@ const Register = () => {
   
     
   }
-  function submitHandler(e){
+ async  function submitHandler(e){
     e.preventDefault();
-    register({name:form.name,email:form.email,password:form.password});
-    
+    const user=await register({name:form.name,email:form.email,password:form.password});
+    if(user){
+      navigate(path.dashboard);
+    }
     
   }
   return (

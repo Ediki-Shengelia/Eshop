@@ -5,14 +5,22 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import Dashboard from './pages/Dashboard'
+import { Route, Routes } from 'react-router-dom'
+import { path } from './route/path'
+import Post from './components/Post'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-     {/* <Register/> */}
-     <Login/>
+    <Routes>
+      <Route path={path.login} element={<Login/>}/>
+      <Route path={path.register} element={<Register/>}/>
+      <Route path={path.dashboard} element={<Dashboard/>}/>
+      <Route path={path.postId} element={<Post/>}/>
+    </Routes>
     </>
   )
 }
